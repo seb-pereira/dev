@@ -87,7 +87,7 @@ rtl and a11y.
 				if (a11y !== "disable") {
 					query = query + ((query.length === 0)?"?":"&") + "a11y=true";
 				}
-				loc.replace(loc.pathname.substring(loc.pathname.lastIndexOf("/") + 1) + query);
+				loc.replace(loc.pathname + query);
 			};
 			setDefaultSelection();
 		}
