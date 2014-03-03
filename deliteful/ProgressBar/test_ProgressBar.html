@@ -53,8 +53,8 @@
 				testBarPrg.max = max;
 			};
 			setValue = function (value) {
-				testBar.value = (value === "Infinity")?Infinity:value;
-				testBarPrg.value = (value === "Infinity")?Infinity:value;
+				testBar.value = value;
+				testBarPrg.value = value;
 			};
 			setMessage = function (message) {
 				testBar.message = message;
@@ -146,7 +146,7 @@
 		<input type="button" value="75" onclick="setValue(75);" />
 		<input type="button" value="99" onclick="setValue(99);" />
 		<input type="button" value="100" onclick="setValue(100);" />
-		<input type="button" value="Indeterminate" onclick="setValue(Infinity);" />
+		<input type="button" value="Indeterminate" onclick="setValue(NaN);" />
 		<br>
 		<input type="button" name="set" id="setMaximum" value="Set maximum"/>
 		<input type="text" name="maximum" id="maximum" size="6"/>
