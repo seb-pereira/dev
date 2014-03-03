@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.outer {
+			position: relative;
+			height: 40px;
+			width: 200px;
+			background-color: green;
+			border-radius: 40px;
+			overflow: hidden;
+		}
+		.inner {
+			position: absolute;
+			height: 100%;
+			width: 20%;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<a href="http://jsfiddle.net/spereira/V4WcZ/">Test on jsfiddle</a>
+	<div class="outer">
+		<div class="inner">
+		</div>
+	</div>
+	Left and right sides should be rounded if left side isn't, you're facing the issue.
+	Issue found on Android 4.2.2 (webkit 535.19). Also appears on iOS6/7 under certain circumstances (after updating width with transition).
+</body>
+</html>

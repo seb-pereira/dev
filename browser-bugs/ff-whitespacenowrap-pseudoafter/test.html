@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.outer {
+			background-color: green;
+			position: relative;
+			height: 40px;
+			width: 200px;
+		}
+		.inner {
+			background-color: red;
+			position: absolute;
+			width: 100%;
+			overflow:hidden;
+			text-align: left;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.inner::after {
+			background-color: lightgreen;
+			content:"RightText";
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<a href="http://jsfiddle.net/LNct8/">Test on jsfiddle</a>
+	Test #1
+	<div class="outer">
+		<div class="inner">LeftText</div>
+	</div>
+	"RightText" should be on th same line as "LeftText".
+	<hr>
+	Test #2
+	<div class="outer">
+		<div class="inner">LeftText: a long, long, very long text</div>
+	</div>
+	"RightText" should jump to the next line. "LeftText" should be truncated with 3 dots.
+</body>
+</html>
