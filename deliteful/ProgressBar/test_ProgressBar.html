@@ -24,7 +24,7 @@
 			var testBarPrg = new ProgressBar({id: "testBarPrg", value: 75, style:"width: 250px"}).placeAt("testBarPrgLabel","after");
 			on(testBarPrg, "change", function(event) {
 				document.getElementById('extLabelPrg').innerHTML =
-						(event.percent * 100) + '% (' + event.value  + '/' + event.max + ')';
+						(event.percent) + '% (' + event.value  + '/' + event.max + ')';
 			});
 			testBarPrg.startup();
 			var inputVal = dom.byId("progressValue");
@@ -75,9 +75,9 @@
 				testBar.value = testBar.value;//force message to align correctly...//todo: use mutation event to detect width change on widget
 				testBarPrg.value = testBarPrg.value;
 			};
-			displayValues = function (flag) {
-				testBar.displayValues = flag;
-				testBarPrg.displayValues = flag;
+			displayExtMsg = function (flag) {
+				testBar.displayExtMsg = flag;
+				testBarPrg.displayExtMsg = flag;
 			};
 
 			//timer
@@ -129,7 +129,7 @@
 		<hr>
 		Declarative:<d-progress-bar id="testBar" value=75 style="width:250px;"
 					onchange="document.getElementById('extLabel').innerHTML =
-					(event.percent * 100) + '% (' + event.value  + '/' + event.max + ')';">
+					(event.percent) + '% (' + event.value  + '/' + event.max + ')';">
 				</d-progress-bar>.
 		<br>onchange: <span id="extLabel" class="spanContent"></span>
 		<hr>
@@ -165,8 +165,8 @@
 		<input type="text" name="message" id="message" size="15" value="Loading..."/>
 		<input type="button" value="Default Message" onclick="setMessage('');" />
 		<br>
-		<input type="button" value="displayValues:true" onclick="displayValues(true);" />
-		<input type="button" value="displayValues:false" onclick="displayValues(false);" />
+		<input type="button" value="displayExtMsg:true" onclick="displayExtMsg(true);" />
+		<input type="button" value="displayExtMsg:false" onclick="displayExtMsg(false);" />
 		<br>
 		<input type="button" value="display:block" onclick="setDisplay('block');" />
 		<input type="button" value="display:default" onclick="setDisplay();" />
