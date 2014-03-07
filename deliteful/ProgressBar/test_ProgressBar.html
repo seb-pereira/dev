@@ -21,17 +21,19 @@
 		], function (dom, domClass, register, on,Deferred,  ProgressBar) {
 			register.parse();
 			var testBar = dom.byId("testBar");
-			var testBarPrg = new ProgressBar({id: "testBarPrg", value: 75, style:"width: 250px"}).placeAt("testBarPrgLabel","after");
+			var testBarPrg = new ProgressBar({id: "testBarPrg", min:0, max:100, value: 75, style:"width: 250px"}).placeAt("testBarPrgLabel","after");
 			on(testBarPrg, "change", function(event) {
 				document.getElementById('extLabelPrg').innerHTML =
-						(event.percent) + '% (' + event.value  + '/' + event.max + ')';
+						(event.percent) + '% (' + event.value  + ') ' + event.min + '/' + event.max;
 			});
 			testBarPrg.startup();
 			var inputVal = dom.byId("progressValue");
 			var inputMax = dom.byId("maximum");
+			var inputMin = dom.byId("minimum");
 			var inputPla = dom.byId("fractionDigits");
 			// set default value
 			inputMax.value = testBar.max;
+			inputMin.value = testBar.min;
 			inputVal.value = testBar.value;
 			inputPla.value = testBar.fractionDigits;
 
@@ -40,6 +42,9 @@
 			});
 			on(dom.byId("setMaximum"), "click", function() {
 				setMaximum(inputMax.value);
+			});
+			on(dom.byId("setMinimum"), "click", function() {
+				setMinimum(inputMin.value);
 			});
 			on(dom.byId("setFractionDigits"), "click", function() {
 				setFractionDigits(inputPla.value);
@@ -51,6 +56,10 @@
 			setMaximum = function (max) {
 				testBar.max = max;
 				testBarPrg.max = max;
+			};
+			setMinimum = function (min) {
+				testBar.min = min;
+				testBarPrg.min = min;
 			};
 			setValue = function (value) {
 				testBar.value = value;
@@ -72,8 +81,6 @@
 			setSize = function (size) {
 				testBar.style.width = size;
 				testBarPrg.style.width = size;
-				testBar.value = testBar.value;//force message to align correctly...//todo: use mutation event to detect width change on widget
-				testBarPrg.value = testBarPrg.value;
 			};
 			displayExtMsg = function (flag) {
 				testBar.displayExtMsg = flag;
@@ -127,9 +134,9 @@
 	<div style="padding: 2px 5% 0 5%; font-size: 16px">
 		<h3>d-progress-bar</h3>
 		<hr>
-		Declarative:<d-progress-bar id="testBar" value=75 style="width:250px;"
+		Declarative:<d-progress-bar id="testBar" value=75 min=0 max=100 style="width:250px;"
 					onchange="document.getElementById('extLabel').innerHTML =
-					(event.percent) + '% (' + event.value  + '/' + event.max + ')';">
+					(event.percent) + '% (' + event.value  + ')' + event.min + '/' + event.max;">
 				</d-progress-bar>.
 		<br>onchange: <span id="extLabel" class="spanContent"></span>
 		<hr>
@@ -147,6 +154,13 @@
 		<input type="button" value="99" onclick="setValue(99);" />
 		<input type="button" value="100" onclick="setValue(100);" />
 		<input type="button" value="Indeterminate" onclick="setValue(NaN);" />
+		<br>
+		<input type="button" name="set" id="setMinimum" value="Set minimum"/>
+		<input type="text" name="minimum" id="minimum" size="6"/>
+		<input type="button" value="50" onclick="setMinimum(50);" />
+		<input type="button" value="100" onclick="setMinimum(100);" />
+		<input type="button" value="200" onclick="setMinimum(200);" />
+		<input type="button" value="500" onclick="setMinimum(500);" />
 		<br>
 		<input type="button" name="set" id="setMaximum" value="Set maximum"/>
 		<input type="text" name="maximum" id="maximum" size="6"/>
