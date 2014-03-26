@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport"
+		  content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+
+	<title>Deliteful Widgets theme demo</title>
+	<script type="text/javascript" src="../../../delite/tests/boilerplate.js"></script>
+
+	<script type="text/javascript">
+		require([
+			"dojo/dom",
+			"dojo/dom-class",
+			"delite/register",
+			"deliteful/Button",
+			"deliteful/Slider",
+			"dpointer/events",
+			"dojo/domReady!"
+		], function (dom, domClass, register, Button) {
+			register.parse();
+		});
+	</script>
+</head>
+<body>
+<div>
+	<h3>d-button</h3>
+
+	<p>
+		Enabled
+		<button is="d-button">Default</button>
+		<button is="d-button" class="d-button-blue">Primary</button>
+		<button is="d-button" class="d-button-success">Success</button>
+		<button is="d-button" class="d-button-info">Info</button>
+		<button is="d-button" class="d-button-warning">Warning</button>
+		<button is="d-button" class="d-button-red">Danger</button>
+		<button is="d-button" class="d-button-link">Link</button>
+	</p>
+	<p>
+		Disabled
+		<button is="d-button" disabled value="">Default</button>
+		<button is="d-button" disabled class="d-button-blue">Primary</button>
+		<button is="d-button" disabled class="d-button-success">Success</button>
+		<button is="d-button" disabled class="d-button-info">Info</button>
+		<button is="d-button" disabled class="d-button-warning">Warning</button>
+		<button is="d-button" disabled class="d-button-red">Danger</button>
+		<button is="d-button" disabled class="d-button-link">Link</button>
+	</p>
+	<button is="d-button">This is a very long label for a button, isn't it?</button>
+	<hr>
+	<h3>d-slider</h3>
+	Enabled
+	<d-slider value="50" min="0" max="100"></d-slider>
+	<d-slider value="10,15" min="0" max="20" step="0.125"></d-slider>
+	<br>
+	Disabled
+	<d-slider value="50" disabled min="0" max="100"></d-slider>
+	<d-slider value="10,15" disabled min="0" max="20" step="0.125"></d-slider>
+	<hr>
+	<!-- include theme selector -->
+	<iframe src="../theme_selector.html" height="250px" width="250px"></iframe>
+</div>
+</body>
+</html>
