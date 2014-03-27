@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="mobile">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 	<meta name="viewport"
@@ -16,17 +16,24 @@
 			"delite/register",
 			"deliteful/Button",
 			"deliteful/Slider",
+			"deliteful/ProgressBar",
 			"dpointer/events",
 			"dojo/domReady!"
-		], function (dom, domClass, register, Button) {
+		], function (dom, domClass, register) {
 			register.parse();
 		});
 	</script>
+	
+	<style>
+		.d-progress-bar {
+			width: 25em;
+		}
+	</style>
+	
 </head>
-<body>
+<body class="d-background">
 <div>
 	<h3>d-button</h3>
-
 	<p>
 		Enabled
 		<button is="d-button">Default</button>
@@ -47,7 +54,12 @@
 		<button is="d-button" disabled class="d-button-red">Danger</button>
 		<button is="d-button" disabled class="d-button-link">Link</button>
 	</p>
-	<button is="d-button">This is a very long label for a button, isn't it?</button>
+	<p>
+		<button is="d-button">This is a very long label for a button, isn't it?</button>
+	</p>
+	<p>
+		<button is="d-button" style="max-width: 50px">This button has a maximum width of 50px</button>
+	</p>
 	<hr>
 	<h3>d-slider</h3>
 	Enabled
@@ -57,6 +69,24 @@
 	Disabled
 	<d-slider value="50" disabled min="0" max="100"></d-slider>
 	<d-slider value="10,15" disabled min="0" max="20" step="0.125"></d-slider>
+	<hr>
+	<h3>d-progress-bar</h3>
+	<p>
+		<d-progress-bar value=1></d-progress-bar>
+		<d-progress-bar message="Default..."></d-progress-bar>
+		<br>
+		<d-progress-bar class="d-progress-bar-success" value=10></d-progress-bar>
+		<d-progress-bar class="d-progress-bar-success" message="Success..."></d-progress-bar>
+		<br>
+		<d-progress-bar class="d-progress-bar-info" value=30></d-progress-bar>
+		<d-progress-bar class="d-progress-bar-info" message="Info..."></d-progress-bar>
+		<br>
+		<d-progress-bar class="d-progress-bar-warning" value=50></d-progress-bar>
+		<d-progress-bar class="d-progress-bar-warning" message="Warning..."></d-progress-bar>
+		<br>
+		<d-progress-bar class="d-progress-bar-danger" value=98></d-progress-bar>
+		<d-progress-bar class="d-progress-bar-danger" message="Danger..."></d-progress-bar>
+	</p>
 	<hr>
 	<!-- include theme selector -->
 	<iframe src="../theme_selector.html" height="250px" width="250px"></iframe>
