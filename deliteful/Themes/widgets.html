@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="mobile">
+<html>
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 	<meta name="viewport"
@@ -17,21 +17,27 @@
 			"deliteful/Button",
 			"deliteful/Slider",
 			"deliteful/ProgressBar",
+			"deliteful/StarRating",
 			"dpointer/events",
 			"dojo/domReady!"
 		], function (dom, domClass, register) {
 			register.parse();
 		});
 	</script>
-	
+
 	<style>
 		.d-progress-bar {
 			width: 25em;
 		}
+		.d-icon-cut {
+			background-image: url('images/cut.gif'); /* Contains both object and action icons in a sprite image for the enabled state.  */
+			width: 16px;
+			height: 16px;
+		}
 	</style>
-	
+
 </head>
-<body class="d-background">
+<body>
 <div>
 	<h3>d-button</h3>
 	<p>
@@ -46,13 +52,18 @@
 	</p>
 	<p>
 		Disabled
-		<button is="d-button" disabled value="">Default</button>
+		<button is="d-button" disabled>Default</button>
 		<button is="d-button" disabled class="d-button-blue">Primary</button>
 		<button is="d-button" disabled class="d-button-success">Success</button>
 		<button is="d-button" disabled class="d-button-info">Info</button>
 		<button is="d-button" disabled class="d-button-warning">Warning</button>
 		<button is="d-button" disabled class="d-button-red">Danger</button>
 		<button is="d-button" disabled class="d-button-link">Link</button>
+	</p>
+	<p>
+		Icon
+		<button is="d-button" iconClass="d-icon-cut">Icon Cut</button>
+		<button is="d-button"  style="max-width: 50px" iconClass="d-icon-cut">Icon Cut width 50px</button>
 	</p>
 	<p>
 		<button is="d-button">This is a very long label for a button, isn't it?</button>
@@ -62,13 +73,24 @@
 	</p>
 	<hr>
 	<h3>d-slider</h3>
-	Enabled
-	<d-slider value="50" min="0" max="100"></d-slider>
-	<d-slider value="10,15" min="0" max="20" step="0.125"></d-slider>
-	<br>
-	Disabled
-	<d-slider value="50" disabled min="0" max="100"></d-slider>
-	<d-slider value="10,15" disabled min="0" max="20" step="0.125"></d-slider>
+	<p>
+		Enabled
+		<d-slider value="50" min="0" max="100"></d-slider>
+		<d-slider value="10,15" min="0" max="20" step="0.125"></d-slider>
+		<br>
+		Disabled
+		<d-slider value="50" disabled min="0" max="100"></d-slider>
+		<d-slider value="10,15" disabled min="0" max="20" step="0.125"></d-slider>
+	</p>
+	<p dir="rtl">
+		Enabled
+		<d-slider value="50" min="0" max="100"></d-slider>
+		<d-slider value="10,15" min="0" max="20" step="0.125"></d-slider>
+		<br>
+		Disabled
+		<d-slider value="50" disabled min="0" max="100"></d-slider>
+		<d-slider value="10,15" disabled min="0" max="20" step="0.125"></d-slider>
+	</p>
 	<hr>
 	<h3>d-progress-bar</h3>
 	<p>
@@ -87,6 +109,16 @@
 		<d-progress-bar class="d-progress-bar-danger" value=98></d-progress-bar>
 		<d-progress-bar class="d-progress-bar-danger" message="Danger..."></d-progress-bar>
 	</p>
+	<hr>
+	<h3>d-start-rating</h3>
+	<div class="group group1">
+		Rating is <d-star-rating readonly value='0'></d-star-rating>0<br>
+		Rating is <d-star-rating readonly value='0.5'></d-star-rating>0.5<br>
+		Rating is <d-star-rating readonly value='1'></d-star-rating>1<br>
+		Rating is <d-star-rating value='1.5'></d-star-rating>1.5<br>
+		Rating is <d-star-rating value='2'></d-star-rating>2<br>
+		Rating is <d-star-rating value='5'></d-star-rating>5<br>
+	</div>
 	<hr>
 	<!-- include theme selector -->
 	<iframe src="../theme_selector.html" height="250px" width="250px"></iframe>
